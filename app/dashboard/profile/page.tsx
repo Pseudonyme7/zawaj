@@ -11,7 +11,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
-import { User, Heart, MapPin, Users, Eye, Shield, FileText, Save } from 'lucide-react'
+import { User, Heart, Users, Eye, Shield, FileText, Save } from 'lucide-react'
 
 const profileSchema = z.object({
     // Informations personnelles
@@ -324,7 +324,7 @@ export default function ProfilePage() {
                                         <CardContent className="space-y-6">
                                             <div className="space-y-2">
                                                 <Label>Situation maritale</Label>
-                                                <Select onValueChange={(value) => setValue('maritalStatus', value as any)}>
+                                                <Select onValueChange={(value) => setValue('maritalStatus', value as 'celibataire' | 'marie' | 'divorce' | 'veuf')}>
                                                     <SelectTrigger className={errors.maritalStatus ? 'border-red-500' : ''}>
                                                         <SelectValue placeholder="Sélectionnez votre situation" />
                                                     </SelectTrigger>
@@ -499,7 +499,7 @@ export default function ProfilePage() {
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 <div className="space-y-2">
                                                     <Label>Suivez-vous le minhaj salafi ?</Label>
-                                                    <Select onValueChange={(value) => setValue('followsMinhaj', value as any)}>
+                                                    <Select onValueChange={(value) => setValue('followsMinhaj', value as 'oui' | 'non')}>
                                                         <SelectTrigger className={errors.followsMinhaj ? 'border-red-500' : ''}>
                                                             <SelectValue placeholder="Sélectionnez" />
                                                         </SelectTrigger>
@@ -514,7 +514,7 @@ export default function ProfilePage() {
                                                 </div>
                                                 <div className="space-y-2">
                                                     <Label>Projet Hijra</Label>
-                                                    <Select onValueChange={(value) => setValue('hijraProject', value as any)}>
+                                                    <Select onValueChange={(value) => setValue('hijraProject', value as 'court_terme' | 'moyen_terme' | 'long_terme' | 'aucun')}>
                                                         <SelectTrigger className={errors.hijraProject ? 'border-red-500' : ''}>
                                                             <SelectValue placeholder="Sélectionnez" />
                                                         </SelectTrigger>

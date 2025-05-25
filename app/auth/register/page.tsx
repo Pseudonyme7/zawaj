@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -12,7 +12,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Eye, EyeOff, ArrowLeft, User, UserCheck, Heart, Shield, Users, MapPin, FileText } from 'lucide-react'
+import { Eye, EyeOff, ArrowLeft, User, UserCheck, Heart, Shield } from 'lucide-react'
 
 const registerSchema = z.object({
     // Étape 1: Genre
@@ -115,6 +115,14 @@ export default function RegisterPage() {
     const hasChildren = watch('hasChildren')
     const selectedLanguages = watch('languages') || []
 
+    const nextStep = useCallback(() => {
+        if (step < 9) setStep(step + 1)
+    }, [step])
+
+    const prevStep = useCallback(() => {
+        if (step > 1) setStep(step - 1)
+    }, [step])
+
     // Auto-advance when gender is selected
     useEffect(() => {
         if (selectedGender && step === 1) {
@@ -123,7 +131,7 @@ export default function RegisterPage() {
             }, 500) // Small delay for better UX
             return () => clearTimeout(timer)
         }
-    }, [selectedGender, step])
+    }, [selectedGender, step, nextStep])
 
     const handleLanguageChange = (language: string, checked: boolean) => {
         const currentLanguages = selectedLanguages || []
@@ -168,13 +176,7 @@ export default function RegisterPage() {
         }
     }
 
-    const nextStep = () => {
-        if (step < 9) setStep(step + 1)
-    }
 
-    const prevStep = () => {
-        if (step > 1) setStep(step - 1)
-    }
 
     return (
         <div className="min-h-screen zawajuna-hero-bg relative overflow-hidden">
@@ -625,7 +627,7 @@ export default function RegisterPage() {
                                         <div className="space-y-4">
                                             <div className="space-y-2">
                                                 <Label>Situation maritale</Label>
-                                                <Select onValueChange={(value) => setValue('maritalStatus', value as any)}>
+                                                <Select onValueChange={(value) => setValue('maritalStatus', value as 'celibataire' | 'marie' | 'divorce' | 'veuf')}>
                                                     <SelectTrigger className={errors.maritalStatus ? 'border-red-500' : ''}>
                                                         <SelectValue placeholder="Sélectionnez votre situation" />
                                                     </SelectTrigger>
@@ -854,7 +856,7 @@ export default function RegisterPage() {
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="space-y-2">
                                                     <Label>Suivez-vous le minhaj salafi ?</Label>
-                                                    <Select onValueChange={(value) => setValue('followsMinhaj', value as any)}>
+                                                    <Select onValueChange={(value) => setValue('followsMinhaj', value as 'oui' | 'non')}>
                                                         <SelectTrigger className={errors.followsMinhaj ? 'border-red-500' : ''}>
                                                             <SelectValue placeholder="Sélectionnez" />
                                                         </SelectTrigger>
@@ -869,7 +871,7 @@ export default function RegisterPage() {
                                                 </div>
                                                 <div className="space-y-2">
                                                     <Label>Projet Hijra</Label>
-                                                    <Select onValueChange={(value) => setValue('hijraProject', value as any)}>
+                                                    <Select onValueChange={(value) => setValue('hijraProject', value as 'court_terme' | 'moyen_terme' | 'long_terme' | 'aucun')}>
                                                         <SelectTrigger className={errors.hijraProject ? 'border-red-500' : ''}>
                                                             <SelectValue placeholder="Sélectionnez" />
                                                         </SelectTrigger>
