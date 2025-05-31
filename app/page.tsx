@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Heart, Shield, Users, Video, CheckCircle, Edit, FileText, UserCheck, MessageCircle, BadgeCheck, UserSearch } from 'lucide-react'
+import { Shield, Users, Video, CheckCircle, Edit, FileText, UserCheck, MessageCircle, BadgeCheck, UserSearch } from 'lucide-react'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
 
