@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Menu, X, Heart } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useScrollSpy, smoothScrollTo } from '@/lib/use-scroll-spy'
 
 interface NavigationProps {
@@ -57,12 +58,19 @@ export function Navigation({ isAuthenticated = false, userRole = 'user' }: Navig
                     <div className="flex items-center">
                         <Link
                             href="/"
-                            className="flex items-center space-x-2 group"
+                            className="flex items-center space-x-3 group"
                             onClick={() => handleSmoothScroll('accueil')}
                         >
                             <div className="relative">
-                                <Heart className="h-8 w-8 text-emerald-500 group-hover:text-emerald-600 transition-colors duration-300" />
-                                <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-lg group-hover:bg-emerald-600/30 transition-all duration-300"></div>
+                                <Image
+                                    src="/newlogo2.png"
+                                    alt="Zawajuna Logo"
+                                    width={40}
+                                    height={40}
+                                    className="transition-transform duration-300 group-hover:scale-110"
+                                    priority
+                                />
+                                <div className="absolute inset-0 bg-emerald-500/10 rounded-full blur-lg group-hover:bg-emerald-600/20 transition-all duration-300"></div>
                             </div>
                             <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent group-hover:from-emerald-700 group-hover:to-teal-700 transition-all duration-300">
                                 Zawajuna

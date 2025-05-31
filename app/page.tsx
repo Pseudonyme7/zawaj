@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Heart, Shield, Users, Video, CheckCircle, Edit, FileText, UserCheck, MessageCircle, BadgeCheck } from 'lucide-react'
+import { Heart, Shield, Users, Video, CheckCircle, Edit, FileText, UserCheck, MessageCircle, BadgeCheck, UserSearch } from 'lucide-react'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
 
@@ -56,7 +56,7 @@ export default function HomePage() {
             <Card className="text-center card-elegant animate-fade-in border-emerald-100 hover:border-emerald-200">
               <CardHeader>
                 <div className="mx-auto w-20 h-20 bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full flex items-center justify-center mb-6 shadow-lg">
-                  <Heart className="w-10 h-10 text-emerald-600" />
+                  <UserSearch className="w-10 h-10 text-emerald-600" />
                 </div>
                 <CardTitle className="text-xl font-semibold text-emerald-800">Mouqabala Assistée</CardTitle>
               </CardHeader>
@@ -381,7 +381,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-zawajuna-muted-brown">
               <div className="flex items-center space-x-2">
-                <Shield className="w-4 h-4 text-emerald-600" />
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 <span>Paiement sécurisé</span>
               </div>
               <div className="flex items-center space-x-2">
@@ -389,7 +389,7 @@ export default function HomePage() {
                 <span>Résiliation à tout moment</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Heart className="w-4 h-4 text-emerald-600" />
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 <span>Conformité islamique</span>
               </div>
             </div>
@@ -431,7 +431,7 @@ export default function HomePage() {
                 <span className="text-sm">Sécurisé</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Heart className="w-5 h-5 text-emerald-300" />
+                <CheckCircle className="w-5 h-5 text-emerald-300" />
                 <span className="text-sm">Respectueux</span>
               </div>
             </div>
